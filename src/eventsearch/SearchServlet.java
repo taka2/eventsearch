@@ -97,19 +97,22 @@ public class SearchServlet extends HttpServlet {
 			resultArray = SearchResultProcessor.postFilter(resultArray,
 					criteria);
 
-			// 開始日時でソート
-			Arrays.sort(resultArray, new SearchResultComparator());
-
 			if (Util.isStringNull(criteria.getOutputFormat())) {
+				// 開始日時でソート
+				Arrays.sort(resultArray, new SearchResultComparator());
 				req.setAttribute("resultArray", resultArray);
 				req.getRequestDispatcher("/showResult.jsp").forward(req, resp);
 			} else if (criteria.getOutputFormat().equals(
 					SearchCriteria.OUTPUT_FORMAT_RSS)) {
+				// UpdatedAtでソート
+				Arrays.sort(resultArray, new SearchResultComparatorForUpdatedAt());
 				// RSS出力
 				SearchResultProcessor.toRSS(req, resp.getOutputStream(),
 						criteria, resultArray);
 			} else if (criteria.getOutputFormat().equals(
 					SearchCriteria.OUTPUT_FORMAT_JSON)) {
+				// 開始日時でソート
+				Arrays.sort(resultArray, new SearchResultComparator());
 				// JSON出力
 				SearchResultProcessor.toJSON(resp.getOutputStream(),
 						resultArray);

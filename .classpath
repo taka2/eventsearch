@@ -2,15 +2,16 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="testsrc"/>
-	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="lib" path="html/WEB-INF/lib/jdom.jar"/>
+	<classpathentry kind="lib" path="html/WEB-INF/lib/rome-1.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/backport-util-concurrent-3.1.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-codec-1.3.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-lang-2.4.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/ical4j-1.0.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/jsonic-1.2.3.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/rome-1.0.jar"/>
+	<classpathentry kind="lib" path="html/WEB-INF/lib/jsonic-1.2.3.jar"/>
+	<classpathentry kind="lib" path="html/WEB-INF/lib/backport-util-concurrent-3.1.jar"/>
+	<classpathentry kind="lib" path="html/WEB-INF/lib/commons-codec-1.3.jar"/>
+	<classpathentry kind="lib" path="html/WEB-INF/lib/commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="html/WEB-INF/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="html/WEB-INF/lib/ical4j-1.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="output" path="html/WEB-INF/classes"/>
 </classpath>
