@@ -136,7 +136,10 @@ public class SearchResultProcessor {
 			entry.setAuthor(result.getOwnerNickname());
 			SyndContent description = new SyndContentImpl();
 			description.setType("text/plain");
-			description.setValue(result.getDescription());
+			String strDescription = result.getDescription();
+			if(strDescription != null) {
+				description.setValue(strDescription.replace((char)0x1e, ' '));
+			}
 			entry.setDescription(description);
 
 			entries.add(entry);
