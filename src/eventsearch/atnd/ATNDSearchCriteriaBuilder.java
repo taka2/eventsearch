@@ -77,7 +77,14 @@ public class ATNDSearchCriteriaBuilder extends SearchCriteriaBuilder
 				if(!Util.isStringNull(criteria.getKeyword()))
 				{
 					strCondition.append("&keyword_or=");
-					strCondition.append(URLEncoder.encode(criteria.getKeyword(), REQUEST_ENCODING));
+					String keyword = criteria.getKeyword();
+					int spaceIndex = keyword.indexOf(" ");
+					if(spaceIndex != -1) {
+						keyword = keyword.substring(0, spaceIndex);
+					}
+					if(!keyword.startsWith("-")) {
+						strCondition.append(URLEncoder.encode(keyword, REQUEST_ENCODING));
+					}
 				}
 			}
 

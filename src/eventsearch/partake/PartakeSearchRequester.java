@@ -95,7 +95,7 @@ public class PartakeSearchRequester {
 		// イベントID
 		if(!Util.isStringNull(criteria.getEventId())) {
 			if(searchResult.getEventId().equals(criteria.getEventId())) {
-				return true;
+				// OK
 			} else {
 				return false;
 			}
@@ -125,17 +125,28 @@ public class PartakeSearchRequester {
 			targetTo = Util.getEndOfMonth(calTargetMonthTo);
 		}
 		if(Util.isInDateRange(searchResult.getStartedAt(), targetFrom, targetTo)) {
-			return true;
+			// OK
+		} else {
+			return false;
 		}
 
 		// キーワード
 		if(!Util.isStringNull(criteria.getKeyword())) {
-			if(searchResult.getTitle().indexOf(criteria.getKeyword()) != -1) {
-				return true;
+			String keyword = criteria.getKeyword();
+			int spaceIndex = keyword.indexOf(" ");
+			if(spaceIndex != -1) {
+				keyword = keyword.substring(0, spaceIndex);
+			}
+			if(!keyword.startsWith("-")) {
+				if(searchResult.getTitle().indexOf(keyword) != -1) {
+					// OK
+				} else {
+					return false;
+				}
 			}
 		}
 
-		return false;
+		return true;
 	}
 
 	private static java.util.Calendar dateToCalendar(java.util.Date dt) {

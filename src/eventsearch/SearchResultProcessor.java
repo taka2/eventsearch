@@ -111,6 +111,30 @@ public class SearchResultProcessor {
 					}
 				}
 			}
+			
+			// 除外キーワード
+			if(criteria.getKeyword() != null) {
+				boolean isSkip = false;
+
+				String[] keywords = criteria.getKeyword().split(" ");
+				for(String keyword : keywords) {
+					if(keyword.startsWith("-")) {
+						String excludeKeyword = keyword.substring(1);
+						if(searchResult.getTitle() != null && searchResult.getTitle().indexOf(excludeKeyword) != -1) {
+							isSkip = true;
+							break;
+						}
+						if(searchResult.getDescription() != null && searchResult.getDescription().indexOf(excludeKeyword) != -1) {
+							isSkip = true;
+							break;
+						}
+					}
+				}
+
+				if(isSkip) {
+					continue;
+				}
+			}
 
 			resultList.add(searchResult);
 		}

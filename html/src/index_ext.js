@@ -19,7 +19,7 @@ Ext.onReady(function(){
         frame: true,
         title: 'イベント検索条件',
         bodyStyle:'padding:5px 5px 0',
-        height: 150,
+        height: 165,
         region: 'north',
         defaults: {frame: true, width: 180},
         defaultType: 'textfield',
